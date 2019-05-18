@@ -10,6 +10,7 @@ namespace PiePizzeria.Controllers
     {
         public ViewResult Index()
         {
+            ViewBag.Message = "Welcome to the Pie Pizzeria!";
             return View();
         }
     }
