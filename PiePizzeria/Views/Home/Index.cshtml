@@ -1,7 +1,12 @@
-﻿
+﻿@Model PiePizzeria.ViewModels.HomeViewModel   
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Welcome</h1>
 <p>@ViewBag.Message</p>
+
+@foreach (var item in Model.Pies)
+{
+    <h2>@item.LongDescription</h2>
+}
