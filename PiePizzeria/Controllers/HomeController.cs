@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PiePizzeria.Models;
+using PiePizzeria.ViewModels;
 
 namespace PiePizzeria.Controllers
 {
@@ -16,10 +17,17 @@ namespace PiePizzeria.Controllers
             _pieRepository = pieRepository;
         }
 
-        public ViewResult Index()
+        public IActionResult Index()
         {
-            ViewBag.Message = "Welcome to the Pie Pizzeria!";
-            return View();
+            var pies = _pieRepository.GetAllPies().OrderBy(p => p.Name);
+
+            var homeViewModel = new HomeViewModel()
+            {
+                Pies = pies.ToList(),
+                Title = "Welcome to the Pie Pizzeria!"
+            };
+
+            return View(homeViewModel);
         }
     }
 }
