@@ -1,12 +1,19 @@
-﻿@Model PiePizzeria.ViewModels.HomeViewModel   
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@Model PiePizzeria.ViewModels.HomeViewModel  
+ 
+<h2>@Model.Title</h2>
 
-<h1>Welcome</h1>
-<p>@ViewBag.Message</p>
-
-@foreach (var item in Model.Pies)
+@foreach (var pie in Model.Pies)
 {
-    <h2>@item.LongDescription</h2>
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail">
+        <img src="@pie.ImageThumbnailUrl" alt="">
+        <div class="caption">
+            <h3 class="pull-right">@pie.Price.ToString("c")</h3>
+            <h3>
+                @pie.Name
+            </h3>
+            <p>@pie.ShortDescription</p>
+        </div>
+    </div>
+</div>
 }
